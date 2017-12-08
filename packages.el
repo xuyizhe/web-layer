@@ -23,6 +23,6 @@
 (defun xuyizhe-frontend/init-pug-mode ()
   (use-package pug-mode))
 
-(defun xuyizhe-frontend/post-init-typescript ()
+(defun xuyizhe-frontend/post-init-typescript-mode ()
   (setq typescript-indent-level 2))
 
