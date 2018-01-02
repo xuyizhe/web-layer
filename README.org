@@ -5,21 +5,28 @@
 - [[#description][Description]]
   - [[#features][Features:]]
 - [[#install][Install]]
+- [[#configuration][Configuration]]
+  - [[#indentation][Indentation]]
 - [[#key-bindings][Key bindings]]
 
 * Description
-This layer adds support for something.
+This layer adds support for web-developing.
 
 ** Features:
-  - Autocomplete
-  - Lint
-  - Refactor
+  - Pug
+  - Angular
   - ...
 
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =xuyizhe-frontend= to the existing =dotspacemacs-configuration-layers= list in this
 file.
+
+* Configuration
+** Indentation
+  #+BEGIN_SRC emacs-lisp
+    (xuyizhe-frontend :variables indent-level 2)
+  #+END_SRC 
 
 * Key bindings
 
