@@ -3,15 +3,17 @@
 # TOC links should be GitHub style anchors.
 * Table of Contents                                        :TOC_4_gh:noexport:
 - [[#description][Description]]
-  - [[#features][Features:]]
+  - [[#features][Features]]
 - [[#install][Install]]
+  - [[#dependencies][Dependencies]]
+  - [[#examples][Examples]]
 - [[#configuration][Configuration]]
 - [[#key-bindings][Key bindings]]
 
 * Description
   This layer provides a friendly environment for front-end development.
 
-** Features:
+** Features
   - Global indentation 
   - Pug
   - Angular
@@ -21,6 +23,22 @@
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =xuyizhe-frontend= to the existing =dotspacemacs-configuration-layers= list in this
 file.
+
+** Dependencies
+   
+Make sure the following layers are added:
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default
+   dotspacemacs-configuration-layers
+   '(html
+     javascript
+     typescript
+     ))
+#+END_SRC
+
+** Examples
+   - [[https://github.com/xuyizhe/.spacemacs.d][xuyizhe/.spacemacs.d]]
 
 * Configuration
   

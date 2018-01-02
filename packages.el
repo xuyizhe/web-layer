@@ -47,4 +47,6 @@
   (use-package ng2-mode))
 
 (defun xuyizhe-frontend/init-pug-mode ()
-  (use-package pug-mode))
+  (use-package pug-mode
+    :init
+    (setq-default pug-tab-width indent-level)))
