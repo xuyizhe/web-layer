@@ -6,13 +6,13 @@
   - [[#features][Features:]]
 - [[#install][Install]]
 - [[#configuration][Configuration]]
-  - [[#indentation][Indentation]]
 - [[#key-bindings][Key bindings]]
 
 * Description
-This layer adds support for web-developing.
+  This layer provides a friendly environment for front-end development.
 
 ** Features:
+  - Global indentation 
   - Pug
   - Angular
   - ...
@@ -23,10 +23,20 @@ add =xuyizhe-frontend= to the existing =dotspacemacs-configuration-layers= list 
 file.
 
 * Configuration
-** Indentation
-  #+BEGIN_SRC emacs-lisp
-    (xuyizhe-frontend :variables indent-level 2)
-  #+END_SRC 
+  
+You can customize the user experience of xuyizhe-frontend with the following
+layer variables: 
+
+- =indent-level= set the global indentation.
+  
+The default configuration of the layer is:
+
+#+BEGIN_SRC emacs-lisp
+(setq-default dotspacemacs-configuration-layers '(
+  (xuyizhe-frontend :variables
+                   indent-level 2)
+                   ))
+#+END_SRC
 
 * Key bindings
 
