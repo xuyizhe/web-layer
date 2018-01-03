@@ -5,8 +5,8 @@
 - [[#description][Description]]
   - [[#features][Features]]
 - [[#install][Install]]
-  - [[#dependencies][Dependencies]]
-  - [[#examples][Examples]]
+    - [[#dependencies][Dependencies]]
+    - [[#examples][Examples]]
 - [[#configuration][Configuration]]
 - [[#key-bindings][Key bindings]]
 
@@ -14,9 +14,11 @@
   This layer provides a friendly environment for front-end development.
 
 ** Features
-  - Global indentation 
+  - Global indentation
+  - Elm
   - Pug
   - Angular
+  - Vue
   - ...
 
 * Install
@@ -24,7 +26,7 @@ To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =xuyizhe-frontend= to the existing =dotspacemacs-configuration-layers= list in this
 file.
 
-** Dependencies
+*** Dependencies
    
 Make sure the following layers are added:
 
@@ -37,7 +39,7 @@ Make sure the following layers are added:
      ))
 #+END_SRC
 
-** Examples
+*** Examples
    - [[https://github.com/xuyizhe/.spacemacs.d][xuyizhe/.spacemacs.d]]
 
 * Configuration
