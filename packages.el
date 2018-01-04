@@ -24,6 +24,8 @@
 
 (defun xuyizhe-frontend/post-init-web-mode ()
   (progn
+    (add-to-list 'auto-mode-alist '("\\.tag\\'" . web-mode))
+
     (setq web-mode-markup-indent-offset indent-level
           web-mode-css-indent-offset indent-level
           web-mode-code-indent-offset indent-level)
