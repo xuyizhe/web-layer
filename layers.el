@@ -16,4 +16,5 @@
    html
    elm
    typescript
+   react
    ))
