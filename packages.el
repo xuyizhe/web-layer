@@ -19,12 +19,13 @@
     elm-mode
     ng2-mode
     pug-mode
-    vue-mode
+    ;; vue-mode
     ))
 
 (defun xuyizhe-frontend/post-init-web-mode ()
   (progn
     (add-to-list 'auto-mode-alist '("\\.tag\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
 
     (setq web-mode-markup-indent-offset indent-level
           web-mode-css-indent-offset indent-level
@@ -60,5 +61,5 @@
     :init
     (setq-default pug-tab-width indent-level)))
 
-(defun xuyizhe-frontend/init-vue-mode ()
-  (use-package vue-mode))
+;; (defun xuyizhe-frontend/init-vue-mode ()
+;;   (use-package vue-mode))
