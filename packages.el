@@ -14,22 +14,102 @@
 (defconst xuyizhe-frontend-packages
   '(web-mode
     css-mode
+    js-mode
     js2-mode
+    js2-refactor
+    prettier-js
     typescript-mode
-    elm-mode
+    vue-mode
     ng2-mode
     pug-mode
-    ;; vue-mode
+    elm-mode
+    lsp-mode
+    lsp-vue
+    company
+    company-lsp
+    company-quickhelp
     ))
 
-(defun xuyizhe-frontend/post-init-web-mode ()
-  (progn
-    (add-to-list 'auto-mode-alist '("\\.tag\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
+(defun xuyizhe-frontend/post-init-prettier-js ()
+  (use-package prettier-js
+    :defer t
+    :config
+    (setq prettier-js-show-errors "echo")
+    (setq
+     prettier-js-args
+     '(;; "--single-quote" "true"
+       ;; "--trailing-comma" "es5"
+       ))))
 
-    (setq web-mode-markup-indent-offset indent-level
-          web-mode-css-indent-offset indent-level
-          web-mode-code-indent-offset indent-level)
+(defun xuyizhe-frontend/init-lsp-vue ()
+  (use-package lsp-vue))
+
+(defun xuyizhe-frontend/post-init-lsp-mode ()
+  (use-package lsp-mode))
+
+(defun xuyizhe-frontend/post-init-company-quickhelp ()
+  (use-package company-quickhelp))
+
+(defun xuyizhe-frontend/post-init-company-lsp ()
+  (use-package company-lsp
+    :config
+    (setq company-lsp-enable-snippet t)))
+
+(defun xuyizhe-frontend/post-init-company ()
+  (use-package company
+    :init
+    :config
+    (setq company-minimum-prefix-length 1)
+    (setq company-dabbrev-downcase nil)
+    (setq company-idle-delay .1)
+    (setq company-tooltip-align-annotations 't)
+    (setq company-show-numbers t)
+    (setq global-company-mode t)
+
+    (add-hook 'company-mode-hook 'company-quickhelp-mode)
+    (add-to-list 'company-backends 'company-lsp)))
+
+(defun xuyizhe-frontend/init-vue-mode ()
+  (use-package vue-mode
+    :init
+    :config
+    (setq mmm-submode-decoration-level 1)
+    (add-hook 'vue-mode-hook #'smartparens-mode)
+    (add-hook 'vue-mode-hook 'company-mode)
+    (add-hook 'vue-mode-hook #'lsp-vue-mmm-enable)))
+
+
+(defun xuyizhe-frontend/post-init-js2-refactor ()
+  (use-package js2-refactor))
+
+(defun xuyizhe-frontend/post-init-web-mode ()
+  (use-package web-mode
+    :defer t
+    :init
+    (add-to-list 'auto-mode-alist '("\\.tag\\'" . web-mode))
+    ;; (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
+    :config
+    (setq web-mode-markup-indent-offset indent-level)
+    (setq web-mode-css-indent-offset indent-level)
+    (setq web-mode-code-indent-offset indent-level)
+    (setq web-mode-enable-current-element-highlight t)
+    (setq web-mode-dom-errors-show t)
+    (setq web-mode-enable-auto-closing t)
+    (setq web-mode-enable-auto-pairing t)
+    (setq web-mode-enable-css-colorization t)
+
+    (setq company-backends-web-mode '((company-web-html
+                                       company-css
+                                       company-dabbrev-code
+                                       company-keywords
+                                       company-etags)
+                                      company-files company-dabbrev))
+
+    ;; (add-hook 'web-mode-hook #'js2-refactor-mode)
+    (add-hook 'web-mode-hook 'js-auto-beautify-mode)
+    (add-hook 'web-mode-hook #'smartparens-mode)
+    (add-hook 'web-mode-hook 'company-mode)
+    (add-hook 'web-mode-hook 'lsp-vue-enable)
     ))
 
 (defun xuyizhe-frontend/post-init-css-mode ()
@@ -37,11 +117,18 @@
     (setq css-indent-offset indent-level)
     ))
 
+(defun xuyizhe-frontend/post-init-js-mode ()
+  (use-package js-mode
+    :defer t
+    :config
+    (setq js-indent-level indent-level)))
+
 (defun xuyizhe-frontend/post-init-js2-mode ()
-  (progn
-    (setq-default js2-basic-offset indent-level)
-    (setq-default js-indent-level indent-level)
-    ))
+  (use-package js2-mode
+    :defer t
+    :config
+    (setq js2-basic-offset indent-level)
+    (add-hook 'js2-mode-hook 'prettier-js-mode)))
 
 (defun xuyizhe-frontend/post-init-typescript-mode ()
   (progn
@@ -49,17 +136,16 @@
     ))
 
 (defun xuyizhe-frontend/post-init-elm-mode ()
-  (progn
-    (setq elm-indent-offset indent-level)
-    ))
+  (use-package elm-mode
+    :defer t
+    :config
+    (setq elm-indent-offset indent-level)))
 
-(defun xuyizhe-frontend/init-ng2-mode ()
+(defun xuyizhe-frontend/post-init-ng2-mode ()
   (use-package ng2-mode))
 
-(defun xuyizhe-frontend/init-pug-mode ()
+(defun xuyizhe-frontend/post-init-pug-mode ()
   (use-package pug-mode
-    :init
-    (setq-default pug-tab-width indent-level)))
-
-;; (defun xuyizhe-frontend/init-vue-mode ()
-;;   (use-package vue-mode))
+    :defer t
+    :config
+    (setq pug-tab-width indent-level)))

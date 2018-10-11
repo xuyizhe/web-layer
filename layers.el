@@ -12,9 +12,17 @@
 ;; Prerequisites
 
 (configuration-layer/declare-layers
- '(javascript
-   html
-   elm
+ '((html :variables web-fmt-tool 'prettier)
+   (javascript :variables
+               javascript-fmt-tool 'prettier
+               javascript-backend 'tern)
    typescript
+   ;; elm
+
    react
+
+   web-beautify
+   prettier
+   tern
+   lsp
    ))
