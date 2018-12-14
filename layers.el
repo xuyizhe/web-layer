@@ -14,8 +14,8 @@
 (configuration-layer/declare-layers
  '((html :variables web-fmt-tool 'prettier)
    (javascript :variables
-               javascript-fmt-tool 'prettier
-               javascript-backend 'tern)
+               javascript-backend 'tern
+               javascript-fmt-tool 'prettier)
    typescript
    ;; elm
 

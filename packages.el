@@ -13,9 +13,12 @@
 
 (defconst xuyizhe-frontend-packages
   '(web-mode
+    mmm-mode
     css-mode
     js-mode
     js2-mode
+    js-jsx-mode
+    js2-jsx-mode
     js2-refactor
     prettier-js
     typescript-mode
@@ -30,6 +33,7 @@
     company-quickhelp
     ))
 
+
 (defun xuyizhe-frontend/post-init-prettier-js ()
   (use-package prettier-js
     :defer t
@@ -37,9 +41,10 @@
     (setq prettier-js-show-errors "echo")
     (setq
      prettier-js-args
-     '(;; "--single-quote" "true"
-       ;; "--trailing-comma" "es5"
-       ))))
+     '("--print-width" "120"
+       "--trailing-comma" "es5"
+       "--single-quote" "true"
+       "--arrow-parens" "always"))))
 
 (defun xuyizhe-frontend/init-lsp-vue ()
   (use-package lsp-vue))
@@ -73,11 +78,11 @@
   (use-package vue-mode
     :init
     :config
-    (setq mmm-submode-decoration-level 1)
+    (setq mmm-submode-decoration-level 0)
+    (add-hook 'vue-mode-hook 'prettier-js-mode)
     (add-hook 'vue-mode-hook #'smartparens-mode)
     (add-hook 'vue-mode-hook 'company-mode)
     (add-hook 'vue-mode-hook #'lsp-vue-mmm-enable)))
-
 
 (defun xuyizhe-frontend/post-init-js2-refactor ()
   (use-package js2-refactor))
@@ -87,7 +92,7 @@
     :defer t
     :init
     (add-to-list 'auto-mode-alist '("\\.tag\\'" . web-mode))
-    ;; (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
     :config
     (setq web-mode-markup-indent-offset indent-level)
     (setq web-mode-css-indent-offset indent-level)
@@ -97,20 +102,19 @@
     (setq web-mode-enable-auto-closing t)
     (setq web-mode-enable-auto-pairing t)
     (setq web-mode-enable-css-colorization t)
-
     (setq company-backends-web-mode '((company-web-html
                                        company-css
                                        company-dabbrev-code
                                        company-keywords
                                        company-etags)
-                                      company-files company-dabbrev))
-
+                                      company-files
+                                      company-dabbrev))
+    (add-hook 'web-mode-hook 'prettier-js-mode)
     ;; (add-hook 'web-mode-hook #'js2-refactor-mode)
     (add-hook 'web-mode-hook 'js-auto-beautify-mode)
     (add-hook 'web-mode-hook #'smartparens-mode)
     (add-hook 'web-mode-hook 'company-mode)
-    (add-hook 'web-mode-hook 'lsp-vue-enable)
-    ))
+    (add-hook 'web-mode-hook 'lsp-vue-enable)))
 
 (defun xuyizhe-frontend/post-init-css-mode ()
   (progn
@@ -121,7 +125,8 @@
   (use-package js-mode
     :defer t
     :config
-    (setq js-indent-level indent-level)))
+    (setq js-indent-level indent-level)
+    (add-hook 'js-mode-hook 'prettier-js-mode)))
 
 (defun xuyizhe-frontend/post-init-js2-mode ()
   (use-package js2-mode
@@ -130,10 +135,22 @@
     (setq js2-basic-offset indent-level)
     (add-hook 'js2-mode-hook 'prettier-js-mode)))
 
+(defun xuyizhe-frontend/post-init-js-jsx-mode ()
+  (use-package js-jsx-mode
+    :defer t
+    :config
+    (add-hook 'js-jsx-mode-hook 'prettier-js-mode)))
+
+(defun xuyizhe-frontend/post-init-js2-jsx-mode ()
+  (use-package js2-jsx-mode
+    :defer t
+    :config
+    (add-hook 'js2-jsx-mode-hook 'prettier-js-mode)))
+
 (defun xuyizhe-frontend/post-init-typescript-mode ()
   (progn
     (setq typescript-indent-level indent-level)
-    ))
+    (add-hook 'typescript-mode-hook 'prettier-js-mode)))
 
 (defun xuyizhe-frontend/post-init-elm-mode ()
   (use-package elm-mode
