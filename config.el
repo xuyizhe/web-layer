@@ -11,4 +11,6 @@
 
 ;; Variables
 
+;; (spacemacs|defvar-company-backends yoyo-mode)
+
 (defvar indent-level 2)

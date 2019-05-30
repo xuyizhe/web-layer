@@ -12,17 +12,21 @@
 ;; Prerequisites
 
 (configuration-layer/declare-layers
- '((html :variables web-fmt-tool 'prettier)
+ '(
+   ;; (html :variables web-fmt-tool 'prettier)
+   html
    (javascript :variables
-               javascript-backend 'tern
+               javascript-import-tool 'import-js
+               javascript-backend 'lsp
                javascript-fmt-tool 'prettier)
    typescript
    ;; elm
+   ;; (tern :variables tern-disable-port-files nil)
 
    react
+   ;; (vue :variables vue-backend 'lsp)
 
    web-beautify
    prettier
-   tern
    lsp
    ))
