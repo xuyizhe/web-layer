@@ -21,7 +21,6 @@
     js2-refactor
     prettier-js
     typescript-mode
-    vue-mode
     ng2-mode
     pug-mode
     elm-mode
