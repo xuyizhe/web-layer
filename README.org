@@ -2,27 +2,13 @@
 
 # TOC links should be GitHub style anchors.
 * Table of Contents                                        :TOC_4_gh:noexport:
-- [[#description][Description]]
-  - [[#features][Features]]
 - [[#install][Install]]
     - [[#examples][Examples]]
 - [[#configuration][Configuration]]
-- [[#key-bindings][Key bindings]]
-
-* Description
-  This layer provides a friendly environment for front-end development.
-
-** Features
-  - Global indentation
-  - Elm
-  - Pug
-  - Angular
-  - Vue
-  - ...
 
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
-add =xuyizhe-frontend= to the existing =dotspacemacs-configuration-layers= list in this
+add =xuyizhe-web= to the existing =dotspacemacs-configuration-layers= list in this
 file.
 
 *** Examples
@@ -39,19 +25,5 @@ The default configuration of the layer is:
 
 #+BEGIN_SRC emacs-lisp
 (setq-default dotspacemacs-configuration-layers '(
-  (xuyizhe-frontend :variables
-                   indent-level 2)
-                   ))
+  (xuyizhe-web :variables indent-level 2)))
 #+END_SRC
-
-* Key bindings
-
-| Key Binding | Description    |
-|-------------+----------------|
-| ~SPC x x x~ | Does thing01   |
-
-# Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
-# Examples:
-# [[https://github.com/syl20bnr/spacemacs/blob/master/doc/VIMUSERS.org#sessions]]
-# [[https://github.com/syl20bnr/spacemacs/blob/master/layers/%2Bfun/emoji/README.org][Link to Emoji layer README.org]]
-# If space-doc-mode is enabled, Spacemacs will open a local copy of the linked file.

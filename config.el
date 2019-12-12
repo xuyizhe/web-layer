@@ -1,4 +1,4 @@
-;;; config.el --- xuyizhe-frontend layer configuration file for Spacemacs
+;;; config.el --- xuyizhe-web layer configuration file for Spacemacs
 ;;
 ;; Copyright (c) 2012-2017 Yizhe Xu
 ;;

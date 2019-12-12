@@ -1,4 +1,4 @@
-;;; layers.el --- xuyizhe-frontend layer layers file for Spacemacs.
+;;; layers.el --- xuyizhe-web layer layers file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Yizhe Xu
 ;;
@@ -12,21 +12,29 @@
 ;; Prerequisites
 
 (configuration-layer/declare-layers
- '(
-   ;; (html :variables web-fmt-tool 'prettier)
-   html
+ '((html :variables
+         web-fmt-tool 'prettier
+         css-enable-lsp t
+         less-enable-lsp t
+         scss-enable-lsp t
+         html-enable-lsp t)
    (javascript :variables
                javascript-import-tool 'import-js
                javascript-backend 'lsp
-               javascript-fmt-tool 'prettier)
-   typescript
+               javascript-fmt-tool 'prettier
+               javascript-repl `nodejs)
+   (typescript :variables
+               typescript-fmt-on-save t
+               typescript-fmt-tool 'prettier
+               typescript-linter 'tslint
+               typescript-backend 'lsp)
    ;; elm
-   ;; (tern :variables tern-disable-port-files nil)
-
    react
-   ;; (vue :variables vue-backend 'lsp)
-
-   web-beautify
-   prettier
+   (vue :variables
+        vue-backend 'lsp
+        node-add-modules-path t)
    lsp
+   prettier
+   ;; (tern :variables tern-disable-port-files nil)
+   ;; web-beautify
    ))
