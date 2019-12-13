@@ -3,7 +3,7 @@
 ;; Copyright (c) 2012-2017 Yizhe Xu
 ;;
 ;; Author: Yizhe Xu <barrenbass@gmail.com>
-;; URL: https://github.com/xuyizhe/spacemacs-fontend-layer
+;; URL: https://github.com/xuyizhe/web-layer
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
@@ -22,7 +22,8 @@
                javascript-import-tool 'import-js
                javascript-backend 'lsp
                javascript-fmt-tool 'prettier
-               javascript-repl `nodejs)
+               javascript-repl `nodejs
+               js-indent-level 2)
    (typescript :variables
                typescript-fmt-on-save t
                typescript-fmt-tool 'prettier

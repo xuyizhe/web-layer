@@ -3,7 +3,7 @@
 ;; Copyright (c) 2012-2017 Yizhe Xu
 ;;
 ;; Author: Yizhe Xu <barrenbass@gmail.com>
-;; URL: https://github.com/xuyizhe/spacemacs-fontend-layer
+;; URL: https://github.com/xuyizhe/web-layer
 ;;
 ;; This file is not part of GNU Emacs.
 ;;

@@ -16,7 +16,7 @@ file.
 
 * Configuration
   
-You can customize the user experience of xuyizhe-frontend with the following
+You can customize the user experience of xuyizhe-web with the following
 layer variables: 
 
 - =indent-level= set the global indentation.
