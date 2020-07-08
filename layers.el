@@ -22,8 +22,12 @@
                javascript-import-tool 'import-js
                javascript-backend 'lsp
                javascript-fmt-tool 'prettier
+               javascript-fmt-on-save t
                javascript-repl `nodejs
-               js-indent-level 2)
+               js-indent-level 2
+               js2-basic-offset 2
+               js2-mode-show-strict-warnings nil
+               js2-mode-show-parse-errors nil)
    (typescript :variables
                typescript-fmt-on-save t
                typescript-fmt-tool 'prettier
@@ -31,11 +35,9 @@
                typescript-backend 'lsp)
    ;; elm
    react
-   (vue :variables
-        vue-backend 'lsp
-        node-add-modules-path t)
+   (vue :variables vue-backend 'lsp)
    lsp
    prettier
    ;; (tern :variables tern-disable-port-files nil)
    ;; web-beautify
-   ))
+   (node :variables node-add-modules-path t)))

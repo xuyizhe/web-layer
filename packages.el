@@ -14,14 +14,10 @@
 (defconst xuyizhe-web-packages
   '(web-mode
     css-mode
-    js-mode
-    js2-mode
-    js-jsx-mode
-    js2-jsx-mode
+    ;; (js2-mode :toggle (configuration-layer/layer-usedp 'javascript))
     ;; js2-refactor
     prettier-js
     typescript-mode
-    ng2-mode
     pug-mode
     elm-mode
     ;; nodejs-repl
@@ -35,6 +31,7 @@
     (setq web-mode-markup-indent-offset indent-level)
     (setq web-mode-css-indent-offset indent-level)
     (setq web-mode-code-indent-offset indent-level)
+    (setq web-mode-attr-indent-offset indent-level)
     (setq web-mode-enable-current-element-highlight t)
     (setq web-mode-dom-errors-show t)
     (setq web-mode-enable-auto-closing t)
@@ -44,30 +41,26 @@
 (defun xuyizhe-web/post-init-css-mode ()
   (setq css-indent-offset indent-level))
 
-(defun xuyizhe-web/post-init-js2-mode ()
-  (add-to-list 'tern--key-bindings-modes 'js2-mode))
+;; (defun xuyizhe-web/post-init-js2-mode ()
+;;   (add-to-list 'tern--key-bindings-modes 'js2-mode))
 
 (defun xuyizhe-web/post-init-typescript-mode ()
   (setq typescript-indent-level indent-level))
 
-(defun xuyizhe-web/init-ng2-mode ()
-  (use-package ng2-mode :defer t))
 
 (defun xuyizhe-web/post-init-prettier-js ()
   (progn
     (setq prettier-js-show-errors "echo")
     (setq prettier-js-args
-          '("--print-width" "120"
+          '(;; "--print-width" "80"
             "--trailing-comma" "es5"
             "--single-quote" "true"
             "--arrow-parens" "always"))
     (add-hook 'web-mode-hook 'prettier-js-mode)
     (add-hook 'css-mode-hook 'prettier-js-mode)
-    (add-hook 'js-mode-hook 'prettier-js-mode)
-    (add-hook 'js2-mode-hook 'prettier-js-mode)
+    ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
+    (add-hook 'json-mode-hook 'prettier-js-mode)
     (add-hook 'typescript-mode-hook 'prettier-js-mode)
-    (add-hook 'js-jsx-mode-hook 'prettier-js-mode)
-    (add-hook 'js2-jsx-hook 'prettier-js-mode)
     (add-hook 'web-mode-hook 'prettier-js-mode)))
 
 (defun xuyizhe-web/post-init-elm-mode ()
